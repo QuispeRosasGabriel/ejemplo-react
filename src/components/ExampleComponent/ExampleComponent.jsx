@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { useIsAdmin } from '../hooks/useIsAdmin';
+import { useIsAdmin } from '../../hooks/useIsAdmin';
+// import '../styles/index.css';
 
-const ExampleComponent = ({myCredential}) => {
+const ExampleComponent = ({myCredential, children}) => {
 
     const { verifyAdmin, verifyTypeOfUser } = useIsAdmin();
 
@@ -10,12 +11,17 @@ const ExampleComponent = ({myCredential}) => {
     }, [])
 
     return (
+        <>
         <div>
             {
                 !!verifyAdmin ? 'Hola Administrador'
                 : 'Tienes permisos limitados'
             }
         </div>
+<div className='box'>
+            {children}
+</div>
+</>
     )
 }
 
